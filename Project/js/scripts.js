@@ -175,7 +175,7 @@ function loginCheck() {
     Pass = document.getElementById("password").value; //get the password from the user
 
 
-    let selectedUser = arrUsers.find(x => x.userID.toLowerCase() === userInfo.toLowerCase() && x.password === Pass); // selectuser is my whole Object...
+    let selectedUser = arrUsers.find(x => x.userID === userInfo.toLowerCase() && x.password === Pass); // selectuser is my whole Object...
     sessionStorage.setItem("selectUser", JSON.stringify(selectedUser)); // its a way to catch the user information, when we move from page to another
 
     if (selectedUser == null)
