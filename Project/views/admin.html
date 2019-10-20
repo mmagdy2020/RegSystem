@@ -90,82 +90,80 @@
 
 </head>
 
-<body onload="showCourses();showStudentList(); showFacultyList();showProfile()"></body>
-
-<h2>Admin Page</h2>
+<body onload="showCourses();showStudentList(); showFacultyList();showProfile()">
 
 
-<div>
-    <div style="margin-top: 20px;" class="col-xs-3">
-        <center>
+    <h2>Faculty Page</h2>
+
+    <div>
+        <div style="margin-top: 20px;" class="col-xs-3">
             <h2>Profile</h2>
-        </center>
 
-        <!-- this for ShowProfile function, showing the data which should appear -->
-        <div class="row">
-            <div class="col-xs-6" style="font-size: 15px; color: #3b15e4">Full Name</div>
-            <div id="FullName" class="col-xs-6" style="font-size: 15px; color: #2c2828"></div>
+            <!-- this for ShowProfile function, showing the data which should appear -->
+            <div class="row">
+                <div class="col-xs-6" style="font-size: 15px; color: #3b15e4">Full Name</div>
+                <div id="FullName" class="col-xs-6" style="font-size: 15px; color: #2c2828"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6" style="font-size: 15px; color: #3b15e4">Phone number:</div>
+                <div id="Phonenumber" class="col-xs-6" style="font-size: 15px; color: #2c2828"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6" style="font-size: 15px; color: #3b15e4">User Name:</div>
+                <div id="UserName" class="col-xs-6" style="font-size: 15px; color: #2c2828"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6" style="font-size: 15px; color: #3b15e4">Role:</div>
+                <div id="role" class="col-xs-6" style="font-size: 15px; color: #2c2828"></div>
+            </div>
+
+            <!-- this for editProfileRedirect function, showing Edit profile-->
+            <button class="btn btn-primary pull-right" onclick="editProfileRedirect()"> Edit Profile</button>
+
+
         </div>
-        <div class="row">
-            <div class="col-xs-6" style="font-size: 15px; color: #3b15e4">Phone number:</div>
-            <div id="Phonenumber" class="col-xs-6" style="font-size: 15px; color: #2c2828"></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6" style="font-size: 15px; color: #3b15e4">User Name:</div>
-            <div id="UserName" class="col-xs-6" style="font-size: 15px; color: #2c2828"></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6" style="font-size: 15px; color: #3b15e4">Role:</div>
-            <div id="role" class="col-xs-6" style="font-size: 15px; color: #2c2828"></div>
+
+        <!-- this for showCourses function, and it should work on Load -->
+        <div class="container col-xs-3 " id="coursesID"> //Show Courses
+            <button type="button" onclick="showCourses()">ShowCourses</button>
         </div>
 
-        <!-- this for editProfileRedirect function, showing Edit profile-->
-        <button class="btn btn-primary pull-right" onclick="editProfileRedirect()"> Edit Profile</button>
+
+        <div class="container col-xs-3 " id="showStudentListID"> //Show Student Info.
+            <button type="button" onclick="showStudentList()">ShowProfile</button>
+        </div>
+
+
+
+        <div class="container col-xs-3 " id="showFacultyListID"> //Show Faculty list.
+            <button type="button" onclick="showFacultyList()">ShowProfile</button>
+        </div>
 
 
     </div>
 
-    <!-- this for showCourses function, and it should work on Load -->
-    <div class="container col-xs-3 " id="coursesID"> //Show Courses
-        <button type="button " onclick="showCourses() ">ShowCourses</button>
-    </div>
 
+    <div class="row">
 
-    <div class="container col-xs-3 " id="showStudentListID"> //Show Student Info.
-        <button type="button " onclick="showStudentList()">ShowProfile</button>
-    </div>
+        <div class="col-md-4">
+            <h4> Search For Courses (Student)</h4>
+            Student ID <input class="form-control input-s" type="text" id="stuID"> <br>
+            <textarea rows="4" cols="45" id="searchResult"></textarea>
+            <button type="button" onclick="findCourses()">Show Courses</button>
+        </div>
 
-
-
-    <div class="container col-xs-3 " id="showFacultyListID"> //Show Faculty list.
-        <button type="button " onclick="showFacultyList()">ShowProfile</button>
-    </div>
-
-
-</div>
-
-
-<div class="row">
-
-    <div class="col-md-4">
-        <h4> Search For Courses (Student)</h4>
-        Student ID <input class="form-control input-s" type="test" id="stuID"> <br>
-        <textarea rows="4" cols="45" id="searchResult"></textarea>
-        <button type="button" onclick="findCourses()">Show Courses</button>
-    </div>
-
-    <div class="col-md-4">
-        <h4>AssignCourses for a Student</h4>
-        Student ID <input type=" test " id="stuID2" class="form-control input-s"> <br>course ID
-        <select id="course" class="form-control input-s">
+        <div class="col-md-4">
+            <h4>AssignCourses for a Student</h4>
+            Student ID <input type="text" id="stuID2" class="form-control input-s"> <br>course ID
+            <select id="course" class="form-control input-s">
                         <option value="(IT 301)">IT 301</option>
                         <option value="(CS 302)">CS 302</option>
                         <option value="(CS 303)">CS 303</option>
                         <option value="(IT 401)">IT 401</option>
                       </select>
-        <br><input type="button" value="Submit" onclick="assignCourses()">
+            <br><input type="button" value="Submit" onclick="assignCourses()">
+        </div>
     </div>
-</div>
 
 
 
