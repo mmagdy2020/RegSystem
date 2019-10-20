@@ -3,7 +3,17 @@
 /* eslint-disable require-jsdoc */
 "use strict";
 
+
 class User {
+    /**
+     * Constructor for creating user object
+     * 
+     * @param {fName} fName the fName for this User
+     *  @param {lName} lName the lName for this User
+     *  @param {phone} phone the phoneNumber for this User
+     *  @param {role} role the role for this User
+     * 
+     */
     constructor(fName, lName, phone, role = "user") { // password, and User ID will be enter uponCheck the availabity of UserID
         this.fName = fName;
         this.lName = lName;
@@ -15,29 +25,25 @@ class User {
         this.fullName = this.fName + " " + this.lName;
 
     }
-    getfName() {
-        return this.fName;
-    }
-
-    getlName() {
-        return this.lName;
-    }
-    getPhone() {
-        return this.phone;
-    }
-
-    getrole() {
-        return this.role;
-    }
 
 
-
+    /**
+     * @returns {string} representation of this User
+     */
 
     toString() {
         return `Full name: ${this.fName} ${this.lName} \n Phone# ${this.phone} \n role: ${this.role} \n isAdmin:${this.isAdmin} \n UserId: ${this.userID}`;
     }
 }
-
+/**
+ * Constructor for creating Admin object
+ * 
+ * @param {fName} fName the fName for this Admin
+ *  @param {lName} lName the lName for this Admin
+ *  @param {phone} phone the phoneNumber for this Admin
+ *  @param {role} role the role for this Admin
+ * 
+ */
 class Admin extends User {
     constructor(fName, lName, phone) {
         super(fName, lName, phone);
@@ -47,10 +53,15 @@ class Admin extends User {
 
 
 }
-
-
-
-
+/**
+ * Constructor for creating RegularUser object
+ * 
+ * @param {fName} fName the fName for this RegularUser
+ *  @param {lName} lName the lName for this RegularUser
+ *  @param {phone} phone the phoneNumber for this RegularUser
+ *  @param {role} role the role for this RegularUser
+ * 
+ */
 
 class RegularUser extends User {
     constructor(fName, lName, phone) {
@@ -60,23 +71,46 @@ class RegularUser extends User {
 
     }
 }
-
+/**
+ * Constructor for creating Student object
+ * 
+ * @param {fName} fName the fName for this Student 
+ *  @param {lName} lName the lName for this Student 
+ *  @param {phone} phone the phoneNumber for this Student 
+ *  @param {role} role the role for this Student 
+ * 
+ */
 class Student extends User {
     constructor(fName, lName, phone, entryYear = 2019, gpa = 4) {
-        super(fName, lName, phone);
-        this.role = "student";
-        this.userID = "St_" + this.fName.charAt(0) + this.lName;
-        this.entryYear = entryYear;
-        this.gba = gpa;
-        this.regestedCourse = [];
-        this.fullName = this.fName + " " + this.lName;
+            super(fName, lName, phone);
+            this.role = "student";
+            this.userID = "St_" + this.fName.charAt(0) + this.lName;
+            this.entryYear = entryYear;
+            this.gba = gpa;
+            this.regestedCourse = [];
+            this.fullName = this.fName + " " + this.lName;
 
-    }
+        }
+        /**
+         * Setter for registred course code
+         * 
+         * @param {String} coursCode The courseCode 
+         * @returns {undefined}
+         */
     setRegestedCourses(coursCode) {
         this.regestedCourse.push(coursCode);
     }
-}
 
+}
+/**
+ * Constructor for creating Faculty object
+ * 
+ * @param {fName} fName the fName for this Faculty 
+ *  @param {lName} lName the lName for this Faculty 
+ *  @param {phone} phone the phoneNumber for this Faculty 
+ *  @param {role} role the role for this Faculty 
+ * 
+ */
 class Faculty extends User {
     constructor(fName, lName, phone, department) {
         super(fName, lName, phone);
@@ -88,25 +122,46 @@ class Faculty extends User {
 
     }
 }
+/**
+ * Constructor for creating Courses object
+ * 
+ * @param {fName} fName the fName for this Courses 
+ *  @param {lName} lName the lName for this Courses 
+ *  @param {phone} phone the phoneNumber for this Courses 
+ *  @param {role} role the role for this Courses 
+ * 
+ */
 
 class Courses {
     constructor(courseName, courseID, courseCode) {
-        this.courseName = courseName;
-        this.courseID = courseID;
-        this.courseCode = courseCode;
-    }
-
+            this.courseName = courseName;
+            this.courseID = courseID;
+            this.courseCode = courseCode;
+        }
+        /**
+         * Accessor for the 'courseName' Courses field
+         * 
+         * @returns {courseName} courseName for this Courses
+         */
     getCourseName() {
-        return this.courseName;
-    }
+            return this.courseName;
+        }
+        /**
+         * Accessor for the 'CourseID' Courses field
+         * 
+         * @returns {CourseID} CourseID for this Courses
+         */
     getCourseID() {
-        return this.courseID;
-    }
+            return this.courseID;
+        }
+        /**
+         * Accessor for the 'courseCode' Courses field
+         * 
+         * @returns {CourseID} courseCode for this Courses
+         */
     getCoureCode() {
-        return this.courseName;
+        return this.courseCode;
     }
-
-
 }
 
 
@@ -156,18 +211,14 @@ fac1.userID = "faculty";
 fac1.password = "faculty";
 arrUsers.push(fac1, fac2, fac3);
 
-
-
-console.log(JSON.stringify());
-
-
-
-
-
 let userInfo = "";
 let Pass = "";
-
-
+/**
+ * 
+ * @param {string} loginCheckfunc that takes the username and password of user
+ * 
+ * @returns {undefined} no explicit return
+ */
 
 function loginCheck() {
 
@@ -195,11 +246,16 @@ function loginCheck() {
     }
 
 }
-
+/**
+ * 
+ * @param {string} showCoursesfunc that takes courseName, courseID and courseCode
+ * 
+ * @returns {string} shows courses 
+ */
 function showCourses() {
 
     let result = `<center><h2>Courses</h2></center>
-    <button type="button " onclick="sortCourses(arrCourses.courseName,arrCourses.courseName) ">sorting(Name)</button>
+    <button type="button " onclick="sortCourses(arrCourses.courseName,arrUsers.courseName) ">sorting(Name)</button>
     <button type="button " onclick="sortCourses(arrCourses.courseCode,arrUsers.courseCode) ">sorting(Code)</button>
     
     <table class='table table-striped' border='2|2'  courseName >`;
@@ -216,7 +272,12 @@ function showCourses() {
     document.getElementById("coursesID").innerHTML = result;
 
 }
-
+/**
+ * 
+ * @param {string} showStudentListfunc that takes student information 
+ * 
+ * @returns {string} shows students list  
+ */
 function showStudentList() {
     let html1 = `<center><h2>Student list</h2></center>
     <button type="button " onclick="sortStudent(arrUsers.fName,arrUsers.fName) ">sorting(fName)</button>
@@ -236,7 +297,12 @@ function showStudentList() {
     html1 += "</table>";
     document.getElementById("showStudentListID").innerHTML = html1;
 }
-
+/**
+ * 
+ * @param {string} showFacultyListfunc that takes fuculty member information 
+ * 
+ * @returns {string} shows faculty list  
+ */
 function showFacultyList() {
     let html1 = `<center><h2>Faculty List </h2></center>
     <button type="button " onclick="sortFaculty(arrUsers.fName,arrUsers.fName) ">sorting(fName)</button>
@@ -258,10 +324,16 @@ function showFacultyList() {
 
 
 }
-
+/**
+ * 
+ * @param {string} sortFacultyfunc that takes fuculty member information 
+ * 
+ * @returns {undefined} no return since it sorts faculty list 
+ */
 
 function sortFaculty(x, y) {
     arrUsers.sort((a, b) => (x > y) ? 1 : -1);
+    //arrUsers.sort((a, b) => (a.fName > b.fName) ? 1 : -1)
 
     showFacultyList();
 
@@ -275,14 +347,18 @@ function sortStudent(x, y) {
 }
 
 function sortCourses(x, y) {
-    arrCourses.sort((a, b) => (x > y) ? 1 : -1)
+    arrCourses.sort((a, b) => (x > y) ? 1 : -1);
 
     showCourses();
 
 }
 
-
-
+/**
+ * 
+ * @param {string} showUserCoursesfunc that takes course information 
+ * 
+ * @returns {string} shows course list  
+ */
 
 function showUserCourses() { // how to take the Login For the User
 
@@ -298,7 +374,12 @@ function showUserCourses() { // how to take the Login For the User
 
 
 }
-
+/**
+ * 
+ * @param {string} showProfilefunc that takes profile information 
+ * 
+ * @returns {string} shows profile   
+ */
 function showProfile() { // we need to edit to be compatable will all of the user, by if statement for each role...
     let profile = JSON.parse(sessionStorage.getItem("selectUser")); // USerLogined Object
     let courses = "";
@@ -322,7 +403,12 @@ function showProfile() { // we need to edit to be compatable will all of the use
 
 
 }
-
+/**
+ * 
+ * @param {string} editProfileRedirectfunc that takes profile information 
+ * 
+ * @returns {undefined} no return since it edit profile information    
+ */
 function editProfileRedirect() {
     let profile = JSON.parse(sessionStorage.getItem("selectUser")); // USerLogined Object
 
@@ -334,7 +420,12 @@ function editProfileRedirect() {
 
 
 // dublicate for code, trying to show profile in editProfile
-
+/**
+ * 
+ * @param {string} showProfileEditablefunc that takes profile information 
+ * 
+ * @returns {string} shows updatedprofile   
+ */
 function showProfileEditable() { // we need to edit to be compatable will all of the user, by if statement for each role...
     let profile = JSON.parse(sessionStorage.getItem("selectUser")); // USerLogined Object
 
@@ -350,12 +441,19 @@ function showProfileEditable() { // we need to edit to be compatable will all of
     document.getElementById("password").value = profile.password;
     document.getElementById("password").readOnly = true;
 
+
+
     // document.getElementById("GPA").innerHTML = profile.gba;
     // document.getElementById("EntryYear").innerHTML = profile.entryYear;
 
 
 }
-
+/**
+ * 
+ * @param {string} sumbitChangefunc that takes profile information 
+ * 
+ * @returns {undefined} no return since it submit edited profile information    
+ */
 function sumbitChange() {
     let profile = JSON.parse(sessionStorage.getItem("selectUser")); // USerLogined Object
 
@@ -370,7 +468,10 @@ function sumbitChange() {
     //  window.location.href = "admin.html"; // redirect
 
 }
-
+/**
+ * 
+ * @returns {undefined} no return since it goback     
+ */
 function goBack() { // why I can't go back after submitting.
     let profile = JSON.parse(sessionStorage.getItem("selectUser")); // USerLogined Object
 
@@ -378,7 +479,12 @@ function goBack() { // why I can't go back after submitting.
 
 
 }
-
+/**
+ * 
+ * @param {string} findCoursesfunc that takes course properties  
+ * 
+ * @returns {string} returns the course information     
+ */
 function findCourses() {
 
     let textValue = document.getElementById("stuID").value;
@@ -388,7 +494,7 @@ function findCourses() {
     let searchedUser = arrUsers.find(x => x.userID === textValue && x.role === "student");
 
     if (searchedUser == null) {
-        alert("please try with a valid Student User ID");
+        alert("please try a valid Student User ID");
     } else {
         searchedUser.regestedCourse.forEach(element => {
             result += element.courseName + " " + element.courseCode + " \n";
@@ -406,7 +512,12 @@ function findCourses() {
 
 
 }
-
+/**
+ * 
+ * @param {string} assignCoursesfunc that takes course properties  
+ * 
+ * @returns {undefined} returns the course information that assigned     
+ */
 function assignCourses() {
 
     //search first for the UserID
@@ -418,17 +529,10 @@ function assignCourses() {
     let courseAssigned = arrCourses.find(x => x.courseCode === courseValue);
 
     if (searchedUser == null) {
-        alert("please try a walid valid Student User ID");
+        alert("please try a valid Student User ID");
     } else {
-        alert(`The course "${courseAssigned.courseName.toUpperCase()}" has been added to "${searchedUser.fullName}" sucessfully`);
+        alert(courseAssigned.courseName + " add to " + searchedUser.fName + " " + searchedUser.lName);
         searchedUser.setRegestedCourses(courseAssigned);
     }
-
-}
-// new coding for ExtraCredit...avatar
-
-function adminControl() {
-
-    window.location.href = "adminControl.html"; // redirect
 
 }
